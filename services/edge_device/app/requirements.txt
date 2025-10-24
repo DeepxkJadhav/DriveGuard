@@ -1,0 +1,5 @@
+torch
+opencv-python
+ultralytics
+paho-mqtt
+numpy

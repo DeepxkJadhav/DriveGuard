@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.app-container {
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.dashboard {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.alert-list {
+  flex: 1;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.alert-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.alert-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}

@@ -1,0 +1,6 @@
+device_id: "DG_EDGE_001"
+mqtt_broker: "localhost"
+mqtt_port: 1883
+topic: "driveguard/alerts"
+confidence_threshold: 0.5
+model_path: "yolov8n.pt"

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: driveguard_mqtt
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./infra/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  backend:
+    build: ./services/backend
+    container_name: driveguard_backend
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mqtt-broker
+
+  frontend:
+    build: ./services/frontend/web
+    container_name: driveguard_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8000
+    depends_on:
+      - backend

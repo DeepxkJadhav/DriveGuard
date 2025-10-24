@@ -1,0 +1,6 @@
+MODEL_PATH: "models/yolov8/driveguard_custom_yolov8.pt"
+VIDEO_SOURCE: 0
+CONF_THRESHOLD: 0.4
+MQTT_BROKER_HOST: "driveguard-mqtt"
+MQTT_BROKER_PORT: 1883
+MQTT_TOPIC: "driveguard/alerts"

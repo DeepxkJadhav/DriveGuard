@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+paho-mqtt
+sqlalchemy
+psycopg2-binary
+python-dotenv
+opencv-python
+torch
+ultralytics
+pandas
+numpy
+geopy
+requests

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: driveguard-mqtt
+  labels:
+    app: driveguard-mqtt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: driveguard-mqtt
+  template:
+    metadata:
+      labels:
+        app: driveguard-mqtt
+    spec:
+      containers:
+        - name: mqtt
+          image: eclipse-mosquitto:2
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: mqtt-config
+              mountPath: /mosquitto/config/mosquitto.conf
+              subPath: mosquitto.conf
+      volumes:
+        - name: mqtt-config
+          configMap:
+            name: driveguard-mqtt-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: driveguard-mqtt-config
+data:
+  mosquitto.conf: |
+    listener 1883
+    allow_anonymous true
+    persistence true
+    persistence_location /mosquitto/data/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: driveguard-mqtt
+spec:
+  type: ClusterIP
+  selector:
+    app: driveguard-mqtt
+  ports:
+    - port: 1883
+      targetPort: 1883
